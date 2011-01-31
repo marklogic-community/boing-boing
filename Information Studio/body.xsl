@@ -1,4 +1,7 @@
-<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"  xmlns:xdmp="http://marklogic.com/xdmp" xmlns:error="http://marklogic.com/xdmp/error" extension-element-prefixes="xdmp">
+<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"  
+  xmlns:xdmp="http://marklogic.com/xdmp" 
+  xmlns:error="http://marklogic.com/xdmp/error" 
+  extension-element-prefixes="xdmp">
   <!-- Default copy template -->
   <xsl:template match="@*|node()">
     <xsl:copy>
@@ -11,10 +14,11 @@
   <xsl:template match="created_on">
     <created_on><xsl:value-of select='replace(string(.), " ", "T")'/></created_on>
   </xsl:template>
-  <!-- Parse -->
+  <!-- Parse escaped "HTML" out of the body and body_more elements. Some of this HTML is pretty bad. Leave a parse-error attribute and the origial content in the event of an error. -->
   <xsl:template match="body|body_more">
     <xsl:copy>
       <xdmp:try>
+        <!-- Parse the "HTML" and put it into the XHTML namespace. Try full repair. -->
         <xsl:copy-of select="xdmp:unquote(concat('&lt;div&gt;',string(text()),'&lt;/div&gt;'), 'http://www.w3.org/1999/xhtml', ('repair-full'))"/>
         <xdmp:catch name="e">
           <xsl:attribute name="orig"><xsl:value-of select="text()"/></xsl:attribute>
