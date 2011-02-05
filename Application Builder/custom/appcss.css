@@ -1,0 +1,35 @@
+.incident-histogram {
+	position: relative;
+	overflow: hidden;
+	background: /*#333*/ -webkit-gradient(linear, 0% 0%, 0% 100%, from(#505050), to(#333333), color-stop(.5,#202020));
+	height: 80px;
+	padding: 0.25em;
+	padding-left: 1.5em;
+	padding-bottom: 0;
+	border-bottom: solid 1px;
+}
+.incident-histogram .bar {
+	display: block;
+	width: 4px;
+	margin-right: 1px;
+	background: #fff;
+	text-indent: -10000em;
+	float: left;
+}
+.incident-histogram .bar:nth-of-type(12n+1) {
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#84E400), to(#70B400));
+}
+/*
+.incident-histogram .bar:last-of-type {
+	background: orange;
+}
+*/
+.incident-histogram .max {
+	position: absolute;
+	top: -4px;
+	left: 8px;
+	color: white;
+	font-size: 75%;
+	font-weight: bold;
+	font-family: Helvetica;
+}
