@@ -1,8 +1,5 @@
-xquery version "1.0-ml";
-
-(: Copyright 2002-2010 MarkLogic Corporation.  All Rights Reserved. :)
-
-(:
+(: 
+Copyright 2002-2011 MarkLogic Corporation.  All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -20,6 +17,7 @@ limitations under the License.
 
 :)
 
+xquery version "1.0-ml";
 declare namespace itunes = "http://marklogic.com/extension/plugin/boingboing";
 
 import module namespace plugin = "http://marklogic.com/extension/plugin" at "/MarkLogic/plugin/plugin.xqy";
